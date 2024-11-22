@@ -1,0 +1,57 @@
+<div class="min-h-screen justify-center bg-gray-50 p-4">
+    <div class="w-full max-w-3xl">
+      <form (ngSubmit)="onSubmit()" class="relative bg-white rounded-lg shadow-lg">
+        <div class="flex items-center w-full p-4 space-x-4">
+          <!-- Input field and buttons container -->
+          <div class="flex items-center w-full absolute">
+            <!-- Text Input -->
+            <input
+              type="text"
+              [(ngModel)]="message"
+              name="message"
+              [placeholder]="isListening ? 'Listening...' : 'Type a message...'"
+              class="w-full px-4 py-3 text-gray-700 bg-gray-50 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
+              aria-label="Message input"
+            />
+
+            <button
+                type="button"
+                (click)="toggleVoiceInput()"
+                [class.bg-red-500]="isListening"
+                class="p-2 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
+                [attr.aria-label]="isListening ? 'Stop voice input' : 'Start voice input'"
+              >
+                <!-- Microphone Icon -->
+                <i class="fas fa-microphone text-gray-500"></i>
+              </button>
+
+              <button
+                type="submit"
+                class="p-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
+                aria-label="Send message"
+              >
+                <!-- Send Icon -->
+                <i class="fas fa-paper-plane text-white"></i>
+              </button>
+          </div>
+        </div>
+
+  
+        <!-- Wave Bars Animation (when listening) -->
+        <div *ngIf="isListening" class="flex justify-center space-x-1 py-2">
+            <div class="wave-container">
+                <div *ngFor="let bar of waveBars" [style.height.px]="bar" 
+                 class="wave-bar"></div>
+                <!-- Debugging -->
+                <pre>{{ waveBars }}</pre>
+              </div>
+        </div>
+  
+        <!-- Error Message -->
+        <div *ngIf="errorMessage" class="text-red-500 text-sm px-4 pb-4" role="alert">
+          {{ errorMessage }}
+        </div>
+      </form>
+    </div>
+  </div>
+  

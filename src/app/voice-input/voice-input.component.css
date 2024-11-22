@@ -1,0 +1,225 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    height: 100%; 
+    width: 100%; 
+    overflow: hidden;
+}
+
+/* Overall background for the page */
+body {
+    background-color: #1f2937; 
+    color: #1f2937; 
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center; 
+    align-items: center;    
+    height: 100vh; 
+}
+
+/* Container for the form */
+.min-h-screen {
+    display: flex;
+    align-items: center;
+    justify-content:baseline;
+    width: 100%; 
+    min-height: 100vh; 
+    background-color: #1f2937; 
+    padding: 0; 
+    margin: 0; 
+}
+
+/* Form Styling */
+form {
+    position: absolute;
+    background-color: #111827; 
+    border-radius: 12px 12px 0 0; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    width: 100%;
+    max-width: 70%; 
+    margin-bottom: 0; 
+    margin-left: 15%;  
+    margin-right: 20%;
+    transition: all 0.3s ease-in-out;
+    height: 100px;
+}
+
+form.is-listening {
+    height: 300px; 
+  }
+
+
+
+/* Input field container */
+input[type="text"] {
+    width: calc(100% - 15%); 
+    padding: 1rem;
+    background-color: #1f2937; 
+    color: #f9fafb; 
+    border: 2px solid #374151; 
+    border-radius: 1rem; 
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    margin-right: 20px;
+}
+
+/* Input field focus state */
+input[type="text"]:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 4px rgba(59, 130, 246, 0.3);
+}
+
+/* Placeholder text styles */
+input::placeholder {
+    color: #9ca3af;
+}
+
+/* Microphone button */
+button[type="button"].p-2 {
+    background-color: #2d3748; 
+    color: #f9fafb;
+    padding: 12px;
+    border-radius: 50%;
+    border: 2px solid #374151; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 20px;
+}
+
+/* Microphone button active state */
+button[type="button"].p-2.bg-red-500 {
+    background-color: #f87171; 
+    border-color: #f87171;
+}
+
+/* Microphone button hover effect */
+button[type="button"]:hover {
+    background-color: #4b5563; 
+}
+
+/* Send button */
+button[type="submit"].p-2 {
+    background-color: #3b82f6; 
+    color: white;
+    padding: 12px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Send button hover effect */
+button[type="submit"]:hover {
+    background-color: #2563eb; 
+}
+
+/* Position wave bars when listening */
+.flex.justify-center.space-x-1.py-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0px; 
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+/* Fixed input container at the bottom of the screen */
+.input-container {
+    position: fixed;
+    bottom: 20px;
+    align-self: center;
+    transform: translateX(-50%);
+    width: 90%; 
+    max-width: 100%; 
+    background-color: #111827; 
+    padding: 1rem;
+    box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 12px 12px 0 0;
+    z-index: 100;
+}
+
+/* Wave Animation Container */
+/* .wave-animation-container {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+} */
+
+.wave-container {
+    display: flex;
+    align-items: flex-end;
+    align-self: flex-end;
+    height: 100px;
+    justify-content:flex-end;
+    /* overflow: hidden; Ensure no bars are clipped */
+}
+
+
+
+/* Wave Bars Animation */
+.wave-bar {
+    width: 6px;
+    background-color: #007bff;
+    border-radius: 2px;
+    margin: 0 2px; 
+    transition: height 0.5s ease; 
+}
+
+@keyframes wave-animation {
+    0% {
+        height: 20px; /* Start with a lower height */
+    }
+    50% {
+        height: 50px; /* Midway increase in height */
+    }
+    100% {
+        height: 20px; /* Return to original height */
+    }
+}
+
+/* Adjust the wave-bar height dynamically when isListening is true */
+.is-listening .wave-bar {
+    animation: wave-animation 0.3s ease-in-out infinite;
+}
+
+/* Error Message Styling */
+.text-red-500 {
+    color: #f87171; 
+}
+
+.text-sm {
+    font-size: 0.875rem;
+}
+
+.px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.pb-4 {
+    padding-bottom: 1rem;
+}
+
+.error-message {
+    color: #f87171; 
+    text-align: center;
+    font-size: 14px;
+    padding: 10px;
+    background-color: #fff3f3;
+    border-radius: 4px;
+    margin-top: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.error-message strong {
+    font-weight: bold;
+}

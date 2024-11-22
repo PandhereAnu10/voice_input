@@ -2,14 +2,16 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { VoiceInputComponent } from './voice-input/voice-input.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
-    BrowserModule
-  ],
+    BrowserModule,
+    VoiceInputComponent,
+],
   providers: [],
   bootstrap: [AppComponent]
 })
